@@ -4,6 +4,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+        self.pixmap_path = "resources/icons/face_recognition.png"
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(self.pixmap_path), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(706, 614)
         MainWindow.setStyleSheet("background-color: rgb(72, 72, 72);\n"

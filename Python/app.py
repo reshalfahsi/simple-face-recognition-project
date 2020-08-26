@@ -7,7 +7,6 @@ import numpy as np
 import cv2
 import time
 import signal
-from skimage import io
 
 import face_recognition
 

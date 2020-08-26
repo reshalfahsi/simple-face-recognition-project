@@ -1,0 +1,4 @@
+opencv-python
+face_recognition
+pyqt5
+numpy
