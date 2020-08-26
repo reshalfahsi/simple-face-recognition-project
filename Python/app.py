@@ -22,7 +22,12 @@ from libs import *
 
 
 class VideoThread(QThread):
+    ''' VideoThread class handle the streaming and the face recognition    
+    '''
+
     change_pixmap_signal = pyqtSignal(np.ndarray)
+    image_saved_signal = pyqtSignal(bool)
+    video_saved_signal = pyqtSignal(bool)
 
     def __init__(self):
         super().__init__()
@@ -114,7 +119,8 @@ class VideoThread(QThread):
                        self.out = None
                        self.recording_state = "stop"
                        print("Video Saved!")
-
+                       self.video_saved_signal.emit(True)
+                       
                     if not self.captured:
                         last_frame = cv_img
 
@@ -127,6 +133,7 @@ class VideoThread(QThread):
                         if self.image_name is not None:
                             cv2.imwrite(self.image_name, last_frame)
                             print("Image Saved!")
+                            self.image_saved_signal.emit(True)
                 
                 if last_frame is not None:
                     if self.save_image_flag:
@@ -134,13 +141,15 @@ class VideoThread(QThread):
                         self.save_image_flag = False
                         if self.image_name is not None:
                             cv2.imwrite(self.image_name, last_frame)
-                            print("Video Saved!")
+                            print("Image Saved!")
+                            self.image_saved_signal.emit(True)
 
                 if self.out is not None:
                     self.out.release()
                     self.out = None
                     self.recording_state = "stop"
                     print("Video Saved!")
+                    self.video_saved_signal.emit(True)
 
         if self.cap is not None:
             self.cap.release()
@@ -167,6 +176,10 @@ class VideoThread(QThread):
         if self.recording_state == "initial":
             self.recording_state = "play"
             self.out = vidrec
+
+    def changeDataset(self, directory):
+        self.dataset_dir = directory
+        self.updateDataset()
 
 
 class FaceRecognition(QMainWindow, Ui_MainWindow):
@@ -200,7 +213,31 @@ class FaceRecognition(QMainWindow, Ui_MainWindow):
 
         self.allow_to_record_and_capture_flag = False
 
+        self.action_select_dataset.triggered.connect(self.dataset_handler)
+
+        self.thread.image_saved_signal.connect(self.image_saved)
+        self.thread.video_saved_signal.connect(self.video_saved)
+
         self.thread.start()
+
+    def image_saved(self):
+        dlg = AlertDialog(self)
+        dlg.setStatus('image')
+        dlg.exec_()
+
+    def video_saved(self):
+        dlg = AlertDialog(self)
+        dlg.setStatus('video')
+        dlg.exec_()
+
+    def dataset_handler(self):
+        dlg = QFileDialog()
+        dlg.setFileMode(QFileDialog.Directory)
+
+        if dlg.exec_():
+            name_dir = dlg.selectedFiles()
+            self.thread.changeDataset(str(name_dir[0] + '/'))
+        
 
     def stopRecordVideo(self):
         if self.allow_to_record_and_capture_flag:

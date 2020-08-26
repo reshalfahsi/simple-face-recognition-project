@@ -21,8 +21,8 @@ $ sudo pip3 install -r requirements.txt --no-cache-dir
 
 * Stream Video: Stream live video from the webcam.
 * Select Webcam: Select the available webcam in your hardware. The available webcam updated periodically.
-* Capture Image: Capture an image from the streamed video.
-* Video Recorder: Record a video at some point of the streamed video.
+* Capture Image: Capture an image from the streaming video.
+* Video Recorder: Record a video at some point of the streaming video.
 * Select Dataset: Select the proper dataset for the face recognition system. 
 
 ## C++
