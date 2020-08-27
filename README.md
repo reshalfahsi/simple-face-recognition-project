@@ -3,7 +3,7 @@ Simple Face Recognition Implementation in Python and C++
 
 ## Python
 
-Face recognition system implemented in Python within GUI. You can capture an image or record a video during the video stream live from webcam. Source code available [here](https://github.com/reshalfahsi/simple-face-recognition-project/tree/master/Python).
+Face recognition system implemented in Python within GUI. You can capture an image or record a video during the video stream live from webcam. Source code available [here](https://github.com/reshalfahsi/simple-face-recognition-project/tree/master/python).
 
 ![alt text](python/resources/img/demo.gif)
 

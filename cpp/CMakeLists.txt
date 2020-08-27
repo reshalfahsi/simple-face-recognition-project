@@ -48,6 +48,11 @@ add_executable(FaceRecognition src/main.cpp)
 
 add_library(facerecognitionlib src/FaceRecognition/FaceRecognition.cpp)
 
+target_link_libraries(facerecognitionlib
+       pthread
+       ${OpenCV_LIBS}
+)
+
 set_target_properties(facerecognitionlib
     PROPERTIES
       VERSION ${PROJECT_VERSION}
@@ -59,6 +64,7 @@ target_compile_options(facerecognitionlib PRIVATE ${compiler_flags})
 
 target_link_libraries(FaceRecognition 
        facerecognitionlib
+       pthread
        ${OpenCV_LIBS}
 )
 
