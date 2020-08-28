@@ -9,11 +9,11 @@ The face recognition system implemented in Python within the GUI. You can captur
 
 ### Features
 
-* Stream Video: Stream live video from the webcam.
+* Stream Video: Stream live video from the webcam. You can start or stop the streaming anytime.
 * Select Webcam: Select the available webcam in your hardware. The available webcam updated periodically.
-* Capture Image: Capture an image from the streaming video.
-* Video Recorder: Record a video at some point of the streaming video.
-* Select Dataset: Select the proper dataset for the face recognition system. 
+* Capture Image: Capture an image from the streaming video. Then, the image is saved in a certain directory.
+* Video Recorder: Record a video at some point on the streaming video. Then, the video is saved in a certain directory.
+* Select Dataset: Select the proper dataset for the face recognition system.
 
 ## C++
 
