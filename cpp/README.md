@@ -39,6 +39,17 @@ $ ./FaceRecognition --camera /dev/video0 --weight /path/to/weight --config /path
 * `--weight` or `-w` flag determines path to the weight file for the face detection network.
 * `--config` flag determines path to the configuration file for the face detection network.
 * `--recog` flag determines path to the weight file for the face recognition network.
-* `--dataset` flag determines path to the dataset that will be used for the face recognition system.
+* `--dataset` flag determines path to the dataset that will be used for the face recognition system. The dataset is structured as below.
+
+```
+dataset
+├──Name_01.jpg
+├──Name_02.jpg
+├──Name_03.jpg
+.
+.
+.
+└──Name_N.jpg
+```
 
 The weight and configuration files could be downloaded [here](https://drive.google.com/file/d/1YAPqRqTzLP6QLM-U59QzW_Sh_d5g9Zag/view).
