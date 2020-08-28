@@ -32,11 +32,13 @@ $ conan build ..
 After the installation and still under the same folder, run the following command.
 
 ```shell
-$ ./FaceRecognition --camera /dev/video0 --weight /path/to/weight --config /path/to/config
+$ ./FaceRecognition --camera /dev/video0 --weight /path/to/weight --config /path/to/config --recog /path/to/recog --dataset /path/to/dataset
 ```
 
 * `--camera` flag determines which camera device that will be used as video streaming.
-* `--weight` or `-w` flag determines path to the weight file that will be used as weight for the face recognition system network.
-* `--config` flag determines path to the configuration file that will be used as configuration for the face recognition system network.
+* `--weight` or `-w` flag determines path to the weight file that will be used as weight for the face detection network.
+* `--config` flag determines path to the configuration file that will be used as configuration for the face detection network.
+* `--recog` flag determines path to the weight for the face recognition network.
+* `--dataset` flag determines path to the dataset that will be used for the face recognition system.
 
 The weight and configuration files could be downloaded [here](https://drive.google.com/file/d/1YAPqRqTzLP6QLM-U59QzW_Sh_d5g9Zag/view).

@@ -10,6 +10,8 @@ int main(int argc, char **argv) {
     auto weight = "../model/opencv_face_detector_uint8.pb";
     auto config = "../model/opencv_face_detector.pbtxt";
     auto webcam = "/dev/video0";
+    auto recog = "../model/openface.nn4.small2.v1.t7";
+    auto dataset = "../../dataset";
 
     for(int idx = 0; idx < argc; idx++){
 
@@ -33,9 +35,21 @@ int main(int argc, char **argv) {
             }
         }
 
+        if((argv[idx] == "--recog")){
+            if(idx+1<argc){
+                recog = argv[idx+1];
+            }
+        }
+
+        if((argv[idx] == "--dataset")){
+            if(idx+1<argc){
+                dataset = argv[idx+1];
+            }
+        }
+
     }
 
-    FaceRecognition facerec(weight, config, webcam);
+    FaceRecognition facerec(weight, config, recog, dataset, webcam);
 
     facerec.start();
 
