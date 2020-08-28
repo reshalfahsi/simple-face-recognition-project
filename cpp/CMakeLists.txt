@@ -40,7 +40,6 @@ list(APPEND compiler_flags
 # Define Targets
 #####################################
 include_directories(src)
-add_subdirectory(dlib)
 
 set(OpenCV_DIR "/usr/local/lib/opencv4" CACHE PATH '' ${SHOULD_FORCE_CACHE})
 find_package(OpenCV REQUIRED CONFIG)
@@ -53,7 +52,6 @@ add_library(facerecognitionlib src/FaceRecognition/FaceRecognition.cpp)
 target_link_libraries(facerecognitionlib
        pthread
        ${OpenCV_LIBS}
-       dlib
 )
 
 set_target_properties(facerecognitionlib
