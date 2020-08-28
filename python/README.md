@@ -1,6 +1,6 @@
 # Simple Face Recognition Project in Python
 
-The face recognition system implemented in Python within the GUI. TThe GUI is equipped with various features. You can capture an image or record a video during the video stream live from the webcam.
+The face recognition system implemented in Python within the GUI. The GUI is equipped with various features. You can capture an image or record a video during the video stream live from the webcam.
 
 ![alt text](resources/img/demo.gif)
 
