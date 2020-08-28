@@ -8,6 +8,7 @@
 #include <thread>
 
 #include <opencv2/opencv.hpp>
+#include <opencv2/dnn/dnn.hpp>
 
 namespace face_recognition {
 
@@ -32,10 +33,13 @@ public:
 
     cv::Mat result() { return img_result; }
 
+    void process(cv::Mat &frame);
+    
 private:
     std::thread thread;
     bool run;
     cv::Mat img_result;
+    cv::dnn::Net net;
 
 };
 

@@ -3,9 +3,15 @@
 
 using namespace face_recognition;
 
-int main(int argc, char *argv[]) {
+int main(int argc, char **argv) {
   
     std::cout << "Simple Face Recognition Project by Resha Al-Fahsi" << '\n';
+
+    for(int idx = 0; idx < argc; idx++){
+
+        std::cout << argv[idx] << '\n';
+
+    }
 
     FaceRecognition facerec;
 

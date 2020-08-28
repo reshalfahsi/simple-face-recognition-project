@@ -1,5 +1,7 @@
 *.pyc
 *.dat
 build/
+*.pbtxt
+*.pb
 # developer environments
 .vscode

@@ -45,7 +45,7 @@ class VideoThread(QThread):
         self.face_encodings = []
         self.face_names = []
         self.process_this_frame = True
-        self.dataset_dir = 'dataset/'
+        self.dataset_dir = '../dataset/'
         self.updateDataset()
 
     def updateWebcam(self,current_webcam):
