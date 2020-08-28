@@ -1,6 +1,6 @@
 # Simple Face Recognition Project in C++
 
-This project implements face recognition in C++. It received an image from the webcam. Then, the result is shown in the window GUI.
+The face recognition system implemented in C++. It received a video stream from the webcam. Then, the result is shown in the window GUI.
 
 ![alt text](img/demo.gif)
 
