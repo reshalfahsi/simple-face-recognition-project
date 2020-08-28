@@ -15,7 +15,7 @@ namespace face_recognition {
 class FaceRecognition{
 
 public:
-    FaceRecognition();
+    FaceRecognition(std::string weight, std::string config, std::string webcam);
     ~FaceRecognition();
 
     void start();
@@ -40,6 +40,7 @@ private:
     bool run;
     cv::Mat img_result;
     cv::dnn::Net net;
+    std::string device;
 
 };
 

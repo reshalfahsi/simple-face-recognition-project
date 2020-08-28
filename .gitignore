@@ -3,5 +3,6 @@
 build/
 *.pbtxt
 *.pb
+*.zip
 # developer environments
 .vscode

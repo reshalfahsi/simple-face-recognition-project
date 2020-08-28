@@ -2,12 +2,17 @@
 
 using namespace face_recognition;
 
-FaceRecognition::FaceRecognition(){
+FaceRecognition::FaceRecognition(std::string weight, std::string config, std::string webcam){
 
     img_result = cv::Mat::zeros(cv::Size(640, 480), CV_64FC1);
 
-    auto weight_file = "../model/opencv_face_detector_uint8.pb";
-    auto config_file = "../model/opencv_face_detector.pbtxt";
+    std::string weight_file = "../model/opencv_face_detector_uint8.pb";
+    std::string config_file = "../model/opencv_face_detector.pbtxt";
+    device = "/dev/video0";
+
+    if (weight != "") weight_file = weight;
+    if (config != "") config_file = config;
+    if (webcam != "") device = webcam;
 
     net = cv::dnn::readNetFromTensorflow(weight_file, config_file);
 
@@ -27,7 +32,7 @@ void FaceRecognition::start(){
 
 void FaceRecognition::loop(){
 
-    cv::VideoCapture cap(0);
+    cv::VideoCapture cap(device);
     if (!cap.isOpened())
     {
         run = false;
@@ -38,7 +43,7 @@ void FaceRecognition::loop(){
     double dWidth = cap.get(cv::CAP_PROP_FRAME_WIDTH);
     double dHeight = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
 
-    std::cout << "Frame Size:" << dWidth << "x" << dHeight << std::endl;
+    std::cout << "Frame Size: " << dWidth << "x" << dHeight << std::endl;
 
     cv::Mat frame;
 

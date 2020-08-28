@@ -1,5 +1,7 @@
 # Simple Face Recognition Project in C++
 
+This project implements face recognition in C++. It received an image from the webcam. Then, the result is shown in the window GUI.
+
 ## Dependencies
 
 * GCC 7
@@ -7,8 +9,32 @@
 * Ubuntu OS
 * Python 3.++
 
-~~~
+```shell
 $ sudo pip3 install -r requirements.txt --no-cache-dir
-~~~
+```
 
 ## Installation
+
+```shell
+$ git clone 
+$ https://github.com/reshalfahsi/simple-face-recognition-project
+$ cd simple-face-recognition-project/cpp
+$ mkdir -p build
+$ cd build
+$ conan install ..
+$ conan build ..
+```
+
+## Run the Program
+
+After the installation and still under the same folder, run the following command.
+
+```shell
+$ ./FaceRecognition --camera /dev/video0 --weight /path/to/weight --config /path/to/config
+```
+
+* `--camera` flag determines which camera device that will be used as video streaming.
+* `--weight` or `-w` flag determines path to the weight file that will be used as weight for the face recognition system network.
+* `--config` flag determines path to the configuration file that will be used as configuration for the face recognition system network.
+
+The weight and configuration files could be downloaded [here](https://drive.google.com/file/d/1YAPqRqTzLP6QLM-U59QzW_Sh_d5g9Zag/view).
