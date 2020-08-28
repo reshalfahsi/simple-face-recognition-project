@@ -17,3 +17,6 @@ Face recognition system implemented in Python within GUI. You can capture an ima
 
 ## C++
 
+This project implements face recognition in C++. It received an image from the webcam. Then, the result is shown in the window GUI.
+
+![alt text](cpp/img/demo.gif)

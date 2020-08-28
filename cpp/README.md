@@ -2,6 +2,8 @@
 
 This project implements face recognition in C++. It received an image from the webcam. Then, the result is shown in the window GUI.
 
+![alt text](img/demo.gif)
+
 ## Dependencies
 
 * GCC 7
