@@ -18,8 +18,7 @@ $ sudo pip3 install -r requirements.txt --no-cache-dir
 ## Installation
 
 ```shell
-$ git clone 
-$ https://github.com/reshalfahsi/simple-face-recognition-project
+$ git clone https://github.com/reshalfahsi/simple-face-recognition-project
 $ cd simple-face-recognition-project/cpp
 $ mkdir -p build
 $ cd build
