@@ -171,11 +171,6 @@ void FaceRecognition::process(cv::Mat &frame)
 
     cv::Mat detectionMat(detection.size[2], detection.size[3], CV_32F, detection.ptr<float>());
 
-    cv::Mat inputBlobRecog = cv::dnn::blobFromImage(frame, 1.0/255.0, cv::Size(96.0, 96.0), cv::Scalar(0, 0, 0, 0), true, false);
-    net_recog.setInput(inputBlobRecog);
-    cv::Mat recognition = net_recog.forward();
-
-    name = compare_face(recognition);
 
     for(int i = 0; i < detectionMat.rows; i++)
     {
@@ -191,7 +186,28 @@ void FaceRecognition::process(cv::Mat &frame)
             cv::rectangle(frame, cv::Point(x1, y1), cv::Point(x2, y2), cv::Scalar(0, 255, 0),2, 4);
             cv::rectangle(frame, cv::Point(x1, y2 - 35), cv::Point(x2, y2), cv::Scalar(0, 255, 0), cv::FILLED);
             auto font = cv::FONT_HERSHEY_DUPLEX;
-            cv::putText(frame, name, cv::Point(x1 + 6, y2 - 6), font, 1.0, cv::Scalar(255, 255, 255), 1);
+ 
+            if((x1 >= 0) && (y1 >= 0) && (x2 >= 0) && (y2 >= 0) && (x1 < frame.cols) && (y1 < frame.rows) && (x2 < frame.cols) && (y2 < frame.rows)){
+
+                cv::Mat frame_clone = frame.clone();
+        
+                auto x_top = (x1 - 30 >= 0)? x1 - 30 : x1;
+                auto y_top = (y1 - 30 >= 0)? y1 - 30 : y1;
+                auto x_bottom = (x2 + 30 < frame.cols)? x2 + 30 : x2;
+                auto y_bottom = (y2 + 30 < frame.rows)? y2 + 30 : y2;
+        
+                cv::Rect myROI(x_top, y_top, (x_bottom - x_top), (y_bottom -y_top));
+           
+                frame_clone = frame_clone(myROI);
+
+                cv::Mat inputBlobRecog = cv::dnn::blobFromImage(frame_clone, 1.0/255.0, cv::Size(96.0, 96.0), cv::Scalar(0, 0, 0, 0), true, false);
+                net_recog.setInput(inputBlobRecog);
+                cv::Mat recognition = net_recog.forward();
+
+                name = compare_face(recognition);
+            }
+
+            cv::putText(frame, name, cv::Point(x1 + 6, y2 - 6), font, 0.8, cv::Scalar(255, 255, 255), 1);
         }
     }
 }
